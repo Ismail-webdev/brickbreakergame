@@ -1,7 +1,7 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class dialogbox extends JFrame {
     JLabel label;
     JLabel lb;
@@ -37,13 +37,16 @@ public class dialogbox extends JFrame {
 class ActionClass implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int action = Integer.parseInt(e.getActionCommand());
-      if (action == 1){
-          new RegistrationForm();
-      } else if (action == 2) {
-          new LoginPage();
-      }
-      else {
-          System.exit(0);
-      }
+        if (action == 1) {
+            try {
+                new jdbc();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        } else if (action == 2) {
+           LoginPage.main();
+        } else {
+            System.exit(0);
+        }
     }
 }
